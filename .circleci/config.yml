@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  checks:
+    docker:
+      - image: cimg/php:7.4
+    steps:
+      - checkout
+      - run:
+          name: lint
+          command: php -l addons-wp-headless.php
+      - run:
+          name: build plugin
+          command: |
+            make
+            test -f addons-wp-headless.zip
+
+workflows:
+  version: 2
+  default-workflow:
+    jobs:
+      - checks
