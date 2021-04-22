@@ -11,7 +11,7 @@ function addons_disable_frontend()
     global $wp;
 
     $isAuth0Callback =
-        $_SERVER['REQUEST_URI'] === '/index.php' &&
+        $_SERVER['SCRIPT_NAME'] === '/index.php' &&
         !empty($_COOKIE['auth0_state']);
 
     // We allow CRON tasks, REST API requests, requests to the admin interface,
