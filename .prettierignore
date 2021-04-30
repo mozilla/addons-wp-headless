@@ -1,0 +1,11 @@
+# exclude everything by default
+*.*
+# exclude these directories
+/node_modules/
+/vendor/
+# exclude these files
+Makefile
+*.lock
+# Allow files we want to process
+!*.md
+!*.php

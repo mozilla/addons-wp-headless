@@ -1,22 +1,44 @@
 version: 2.1
 
-jobs:
-  checks:
-    docker:
-      - image: cimg/php:7.4
+job-references:
+  mysql_image: &mysql_image
+    circleci/mysql:5.6
+
+  install_dependencies: &install_dependencies
+    name: install dependencies
+    command: |
+      sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
+      sudo -E docker-php-ext-install mysqli
+
+  php_job: &php_job
+    environment:
+      - WP_TESTS_DIR: "/tmp/wordpress-tests-lib"
+      - WP_CORE_DIR: "/tmp/wordpress/"
     steps:
       - checkout
+      - run: *install_dependencies
       - run:
-          name: lint
-          command: php -l addons-wp-headless.php
+          name: run tests
+          command: |
+            composer install
+            rm -rf $WP_TESTS_DIR $WP_CORE_DIR
+            bash bin/install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            ./vendor/bin/phpunit
+            WP_MULTISITE=1 ./vendor/bin/phpunit
       - run:
           name: build plugin
           command: |
             make
             test -f addons-wp-headless.zip
 
+jobs:
+  tests:
+    <<: *php_job
+    docker:
+      - image: circleci/php:7.4
+      - image: *mysql_image
+
 workflows:
-  version: 2
   default-workflow:
     jobs:
-      - checks
+      - tests
