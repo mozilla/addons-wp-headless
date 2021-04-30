@@ -1,5 +1,7 @@
 # addons-wp-headless
 
+[![CircleCI](https://circleci.com/gh/mozilla/addons-wp-headless.svg?style=svg)](https://circleci.com/gh/mozilla/addons-wp-headless)
+
 A WordPress plugin for the AMO blog.
 
 ## Usage
