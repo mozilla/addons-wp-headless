@@ -24,7 +24,9 @@ function addons_disable_frontend()
         !$isAuth0Callback;
 
     if ($isRequestForbbiden) {
-        wp_die('Access is restricted, sorry.', 403);
+        // We use a 401 to "allow" the WPEngine smoketest to pass, see:
+        // https://github.com/mozilla/addons-wp-headless/issues/9
+        wp_die('Access is restricted, sorry.', 401);
     }
 }
 
