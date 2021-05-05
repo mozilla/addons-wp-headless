@@ -25,6 +25,23 @@ class AddonsWpHeadlessTest extends \WP_UnitTestCase
         $this->go_to('/');
     }
 
+    public function testWpDieParameters()
+    {
+        try {
+            $this->go_to('/');
+            $this->fail('an exception is expected');
+        } catch (\Exception $e) {
+            $dieError = $e->getTrace()[0];
+            // See: https://developer.wordpress.org/reference/functions/wp_die/
+            $this->assertEquals(
+                $dieError['args'][0],
+                'Access is restricted, sorry.'
+            );
+            $this->assertEquals($dieError['args'][1], ''); // title, not set
+            $this->assertEquals($dieError['args'][2]['response'], 401);
+        }
+    }
+
     public function testAuthenticatedUsersAreNotRestricted()
     {
         $adminId = $this->factory->user->create();
