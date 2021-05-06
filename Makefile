@@ -6,4 +6,4 @@ $(ZIP_FILE): LICENSE.txt *.php
 	zip $@ $^
 
 clean:
-	rm $(ZIP_FILE)
+	rm -f $(ZIP_FILE)
