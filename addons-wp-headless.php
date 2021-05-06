@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Add-ons WP Headless
  * Description: Restrict access to the WordPress frontend for AMO needs
- * Version: 2.2.0
+ * Version: 3.0.0
  * License: MPL-2
  */
 
