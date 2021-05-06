@@ -3,7 +3,7 @@
  * Plugin Name: Add-ons WP Headless
  * Description: Restrict access to the WordPress frontend for AMO needs
  * Author: Mozilla Add-ons Team
- * Version: 3.0.0
+ * Version: 3.0.1
  * License: MPL-2
  * Requires at least: 5.6.2
  * Requires PHP: 7.4
