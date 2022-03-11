@@ -8,7 +8,6 @@ job-references:
     name: install dependencies
     command: |
       sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
-      sudo -E docker-php-ext-install mysqli
 
   php_job: &php_job
     parameters:
