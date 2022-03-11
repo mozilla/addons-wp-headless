@@ -2,13 +2,12 @@ version: 2.1
 
 job-references:
   mysql_image: &mysql_image
-    circleci/mysql:5.6
+    cimg/mysql:5.7
 
   install_dependencies: &install_dependencies
     name: install dependencies
     command: |
       sudo apt-get update && sudo apt-get install -y subversion default-mysql-client
-      sudo -E docker-php-ext-install mysqli
 
   php_job: &php_job
     parameters:
@@ -39,7 +38,7 @@ jobs:
   tests:
     <<: *php_job
     docker:
-      - image: circleci/php:7.4
+      - image: cimg/php:7.4
       - image: *mysql_image
 
 workflows:
