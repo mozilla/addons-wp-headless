@@ -8,7 +8,7 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite>
+		<testsuite name="addons-wp-headless">
 			<directory suffix="Test.php">./tests/</directory>
 		</testsuite>
 	</testsuites>
