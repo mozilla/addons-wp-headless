@@ -23,11 +23,11 @@ $ docker run --name mysql_addons_wp_headless -e MYSQL_ROOT_PASSWORD=pass -e MYSQ
 Assuming you have a MySQL server running locally using the docker command above, run the following commands once:
 
 ```
-# `5.6.2` is the WordPress version, use `latest` for the latest version or any
+# `5.8.3` is the WordPress version, use `latest` for the latest version or any
 # other version if you like.
 # `true` at the end of the command below skips the database creation since it is
 # created when the docker container starts
-$ ./bin/install-wp-tests.sh addons_wp_headless root pass '127.0.0.1:55001' 5.6.2 true
+$ ./bin/install-wp-tests.sh addons_wp_headless root pass '127.0.0.1:55001' 5.8.3 true
 $ composer install
 ```
 
