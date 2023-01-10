@@ -4,7 +4,7 @@
     "prettier-ci": "prettier -c '**'"
   },
   "dependencies": {
-    "@prettier/plugin-php": "^0.16.2",
+    "@prettier/plugin-php": "^0.19.2",
     "prettier": "^2.2.1"
   }
 }
