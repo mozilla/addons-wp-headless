@@ -4,16 +4,16 @@ class AddonsWpHeadlessTest extends \WP_UnitTestCase
 {
     protected $oldCookies;
 
-    public function setUp()
+    public function set_up()
     {
-        parent::setUp();
+        parent::set_up();
 
         $this->oldCookies = $_COOKIE;
     }
 
-    public function tearDown()
+    public function tear_down()
     {
-        parent::tearDown();
+        parent::tear_down();
 
         $_COOKIE = $this->oldCookies;
     }
@@ -48,6 +48,9 @@ class AddonsWpHeadlessTest extends \WP_UnitTestCase
         wp_set_current_user($adminId);
 
         $this->go_to('/');
+
+        // Not restricted => the request proceeded and resolved to the homepage.
+        $this->assertTrue(is_home());
     }
 
     public function testAdminsAreNotRestricted()
@@ -56,6 +59,9 @@ class AddonsWpHeadlessTest extends \WP_UnitTestCase
         wp_set_current_user($adminId);
 
         $this->go_to('/');
+
+        // Not restricted => the request proceeded and resolved to the homepage.
+        $this->assertTrue(is_home());
     }
 
     public function testAuth0CallbackIsAllowed()
@@ -63,6 +69,9 @@ class AddonsWpHeadlessTest extends \WP_UnitTestCase
         $_COOKIE['auth0_state'] = 'some auth0 state';
 
         $this->go_to('/index.php?auth0=1&code=xyz');
+
+        // Not restricted => the request proceeded and resolved to the homepage.
+        $this->assertTrue(is_home());
     }
 
     public function testAuth0CallbackIsRestrictedWhenThereIsNoCookie()
