@@ -48,5 +48,5 @@ workflows:
           matrix:
             parameters:
               wordpress-version:
-                - '5.8.3'
+                - '7.0.0'
                 - 'latest'
