@@ -43,6 +43,14 @@ $ ./vendor/bin/phpunit
 $ make
 ```
 
+### Making a release
+
+- Edit the PHPdoc comment in [addons-wp-headless.php](./addons-wp-headless.php) to bump the version number, push a commit with that change to `master`
+- Create a GitHub release with that version number from `master`
+- Check out the tag automatically created by the GitHub release
+
+You can then build the plugin and upload the new zip file to the WordPress admin panel as described above.
+
 ## License
 
 This plugin is released under the Mozilla Public License Version 2.0. See the bundled [LICENSE](./LICENSE.txt) file for details.
